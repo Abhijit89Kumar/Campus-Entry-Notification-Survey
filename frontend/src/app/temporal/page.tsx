@@ -146,7 +146,7 @@ export default function TemporalPage() {
               suffix=":00"
               label="Peak Hour"
               icon={Clock}
-              color="primary"
+              color="default"
               delay={0.15}
             />
           </>

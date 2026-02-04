@@ -3,15 +3,19 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { LucideIcon, Loader2 } from "lucide-react";
-import { ReactNode, ButtonHTMLAttributes } from "react";
+import { ReactNode } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
   children: ReactNode;
   variant?: "glass" | "primary" | "ghost";
   size?: "sm" | "md" | "lg";
   icon?: LucideIcon;
   iconPosition?: "left" | "right";
   loading?: boolean;
+  className?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset";
 }
 
 const variantClasses = {
@@ -36,7 +40,8 @@ export function Button({
   loading = false,
   className,
   disabled,
-  ...props
+  onClick,
+  type = "button",
 }: ButtonProps) {
   return (
     <motion.button
@@ -54,7 +59,8 @@ export function Button({
         className
       )}
       disabled={disabled || loading}
-      {...props}
+      onClick={onClick}
+      type={type}
     >
       {loading ? (
         <Loader2 className="w-4 h-4 animate-spin" />
