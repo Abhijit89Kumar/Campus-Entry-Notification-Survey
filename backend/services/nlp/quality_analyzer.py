@@ -8,12 +8,12 @@ from typing import List, Dict, Tuple, Set
 from collections import Counter
 import logging
 
-from backend.config import (
+from config import (
     QUALITY_THRESHOLDS,
     PROFANITY_WORDS,
     KEYBOARD_PATTERNS
 )
-from backend.models.response import QualityResult, QualityFlag
+from models.response import QualityResult, QualityFlag
 
 logger = logging.getLogger(__name__)
 

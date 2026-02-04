@@ -4,7 +4,7 @@ Analyzes cached analytics data to surface the most important findings.
 """
 
 from typing import Dict, Any, List
-from backend.services.confidence import (
+from services.confidence import (
     calculate_percentage_with_ci,
     two_proportion_z_test,
     calculate_sample_adequacy

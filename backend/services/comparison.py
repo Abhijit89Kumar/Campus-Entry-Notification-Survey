@@ -5,7 +5,7 @@ Provides statistical significance testing and insights.
 
 from typing import Dict, Any, List, Optional, Tuple
 import pandas as pd
-from backend.services.confidence import (
+from services.confidence import (
     calculate_percentage_with_ci,
     two_proportion_z_test,
     get_significance_badge

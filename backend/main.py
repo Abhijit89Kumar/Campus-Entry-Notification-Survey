@@ -11,14 +11,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from backend.config import (
+from config import (
     API_HOST,
     API_PORT,
     DEBUG,
     CORS_ORIGINS
 )
-from backend.routers import data_router, analytics_router
-from backend.services.sheets import sheets_service
+from routers import data_router, analytics_router
+from services.sheets import sheets_service
 
 # Configure logging
 logging.basicConfig(
@@ -121,7 +121,7 @@ async def health_check():
 
 if __name__ == "__main__":
     uvicorn.run(
-        "backend.main:app",
+        "main:app",
         host=API_HOST,
         port=API_PORT,
         reload=DEBUG

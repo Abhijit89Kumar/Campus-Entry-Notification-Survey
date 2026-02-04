@@ -7,8 +7,8 @@ from typing import List, Dict, Tuple, Optional
 from collections import Counter
 import logging
 
-from backend.config import CONCERN_CATEGORIES
-from backend.models.response import ConcernAnalysis
+from config import CONCERN_CATEGORIES
+from models.response import ConcernAnalysis
 
 logger = logging.getLogger(__name__)
 

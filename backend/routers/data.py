@@ -6,10 +6,10 @@ from fastapi import APIRouter, HTTPException, Query
 from typing import List, Optional
 import logging
 
-from backend.services.sheets import sheets_service
-from backend.services.nlp.quality_analyzer import quality_analyzer
-from backend.services.nlp.concern_classifier import concern_classifier
-from backend.models.response import SurveyResponse, SurveyResponseList, FilterParams
+from services.sheets import sheets_service
+from services.nlp.quality_analyzer import quality_analyzer
+from services.nlp.concern_classifier import concern_classifier
+from models.response import SurveyResponse, SurveyResponseList, FilterParams
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/data", tags=["Data"])

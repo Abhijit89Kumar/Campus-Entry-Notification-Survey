@@ -9,7 +9,7 @@ from datetime import datetime
 import pandas as pd
 import logging
 
-from backend.config import (
+from config import (
     SHEET_ID, 
     SHEET_NAME, 
     COLUMN_MAP,

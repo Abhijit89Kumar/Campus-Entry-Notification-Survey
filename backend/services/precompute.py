@@ -255,7 +255,7 @@ def compute_word_cloud_data(df, min_freq: int = 3) -> Dict[str, Any]:
 
 def compute_sentiment_data(df) -> Dict[str, Any]:
     """Compute sentiment analysis data."""
-    from backend.services.nlp.sentiment_analyzer import sentiment_analyzer
+    from services.nlp.sentiment_analyzer import sentiment_analyzer
     
     if 'comments' not in df.columns:
         return {}
@@ -307,7 +307,7 @@ def compute_sentiment_data(df) -> Dict[str, Any]:
 
 def compute_suggestions_data(df) -> Dict[str, Any]:
     """Extract and aggregate suggestions from comments."""
-    from backend.services.nlp.suggestion_extractor import suggestion_extractor
+    from services.nlp.suggestion_extractor import suggestion_extractor
     
     if 'comments' not in df.columns:
         return {}
@@ -345,7 +345,7 @@ def compute_suggestions_data(df) -> Dict[str, Any]:
 
 def compute_all_analytics() -> Dict[str, Any]:
     """Compute all analytics with enhanced features."""
-    from backend.services.sheets import sheets_service
+    from services.sheets import sheets_service
     
     logger.info("Starting enhanced analytics computation...")
     start_time = datetime.now()

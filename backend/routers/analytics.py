@@ -208,7 +208,7 @@ async def get_key_findings():
     if not cache:
         raise HTTPException(status_code=503, detail="Analytics cache not available.")
     
-    from backend.services.findings_generator import generate_key_findings
+    from services.findings_generator import generate_key_findings
     
     try:
         return generate_key_findings(cache)
@@ -224,7 +224,7 @@ async def get_recommendations():
     if not cache:
         raise HTTPException(status_code=503, detail="Analytics cache not available.")
     
-    from backend.services.recommendations import generate_recommendations
+    from services.recommendations import generate_recommendations
     
     try:
         return generate_recommendations(cache)
@@ -244,8 +244,8 @@ async def compare_groups(
     Selector format: 'field:value' where field is 'course' or 'year'.
     Examples: 'course:PhD', 'year:1st Year'
     """
-    from backend.services.sheets import sheets_service
-    from backend.services.comparison import compare_groups as do_compare
+    from services.sheets import sheets_service
+    from services.comparison import compare_groups as do_compare
     
     try:
         df = sheets_service.fetch_raw_data()
@@ -263,8 +263,8 @@ async def compare_groups(
 @router.get("/compare/groups")
 async def get_available_groups():
     """Get list of available groups that can be compared."""
-    from backend.services.sheets import sheets_service
-    from backend.services.comparison import get_available_groups as get_groups
+    from services.sheets import sheets_service
+    from services.comparison import get_available_groups as get_groups
     
     try:
         df = sheets_service.fetch_raw_data()
@@ -284,9 +284,9 @@ async def get_decision_summary():
     if not cache:
         raise HTTPException(status_code=503, detail="Analytics cache not available.")
     
-    from backend.services.findings_generator import generate_key_findings
-    from backend.services.recommendations import generate_recommendations
-    from backend.services.confidence import calculate_percentage_with_ci, calculate_sample_adequacy
+    from services.findings_generator import generate_key_findings
+    from services.recommendations import generate_recommendations
+    from services.confidence import calculate_percentage_with_ci, calculate_sample_adequacy
     
     try:
         overview = cache.get("overview", {})
@@ -361,7 +361,7 @@ async def get_cache_status():
 @router.post("/refresh")
 async def refresh_analytics():
     """Refresh the analytics cache."""
-    from backend.services.precompute import refresh_cache
+    from services.precompute import refresh_cache
     
     try:
         result = refresh_cache()
