@@ -87,7 +87,7 @@ Visit `http://localhost:3000`
 
 ## Deployment
 
-### Deploy Frontend → Vercel
+### Deploy Frontend (Vercel)
 
 1. Go to [Vercel](https://vercel.com) and import this repository
 2. Set the **Root Directory** to `frontend`
@@ -95,26 +95,35 @@ Visit `http://localhost:3000`
    - `NEXT_PUBLIC_API_URL` = Your backend URL (from Railway, see below)
 4. Deploy
 
-### Deploy Backend → Railway
+### Deploy Backend (Railway)
 
-The backend uses pandas/numpy/scipy which exceed Vercel's 250MB limit. Use Railway instead (free tier available):
+The backend uses pandas/numpy/scipy which exceed Vercel's 250MB limit. Use **Railway** instead:
 
-1. Go to [Railway](https://railway.app) and sign up with GitHub
-2. Click **"New Project"** → **"Deploy from GitHub repo"**
-3. Select this repository
-4. Set **Root Directory** to `backend`
-5. Add environment variables:
-   - `GOOGLE_SHEET_ID` = Your Google Sheet ID
+1. Go to [Railway](https://railway.app) and create a new project
+2. Click **"Deploy from GitHub repo"** and select this repository
+3. In Settings, set **Root Directory** to `backend`
+4. Add environment variables:
+   - `GOOGLE_SHEET_ID` = `1stdFSjVe3hg6qFJb8dZlFdhREdsLwJFnqB-zN_hE2yQ`
    - `GOOGLE_CREDENTIALS_JSON` = Your service account JSON (as a single line)
-6. Railway auto-detects Python and deploys
-7. Copy the Railway URL and update your Vercel frontend's `NEXT_PUBLIC_API_URL`
+   - `PORT` = `8000`
+5. Railway will auto-detect Python and deploy using the Procfile
+6. Copy the generated URL (e.g., `https://your-app.railway.app`)
+
+### Alternative: Deploy Backend on Render
+
+1. Go to [Render](https://render.com) and create a new **Web Service**
+2. Connect your GitHub repo
+3. Set **Root Directory** to `backend`
+4. Set **Build Command**: `pip install -r requirements.txt`
+5. Set **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+6. Add environment variables (same as Railway)
 
 ### Setting up Google Credentials
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com)
 2. Create a Service Account with Sheets API access
 3. Download the JSON key file
-4. Paste the entire JSON content as `GOOGLE_CREDENTIALS_JSON` environment variable
+4. Paste the entire JSON content as the `GOOGLE_CREDENTIALS_JSON` environment variable
 
 ---
 
