@@ -85,31 +85,36 @@ Visit `http://localhost:3000`
 
 ---
 
-## Vercel Deployment
+## Deployment
 
-### Deploy Frontend
+### Deploy Frontend → Vercel
 
 1. Go to [Vercel](https://vercel.com) and import this repository
 2. Set the **Root Directory** to `frontend`
 3. Add environment variable:
-   - `NEXT_PUBLIC_API_URL` = Your backend URL (e.g., `https://your-backend.vercel.app`)
+   - `NEXT_PUBLIC_API_URL` = Your backend URL (from Railway, see below)
 4. Deploy
 
-### Deploy Backend
+### Deploy Backend → Railway
 
-1. Create a new Vercel project and import this repository
-2. Set the **Root Directory** to `backend`
-3. Add environment variables:
+The backend uses pandas/numpy/scipy which exceed Vercel's 250MB limit. Use Railway instead (free tier available):
+
+1. Go to [Railway](https://railway.app) and sign up with GitHub
+2. Click **"New Project"** → **"Deploy from GitHub repo"**
+3. Select this repository
+4. Set **Root Directory** to `backend`
+5. Add environment variables:
    - `GOOGLE_SHEET_ID` = Your Google Sheet ID
    - `GOOGLE_CREDENTIALS_JSON` = Your service account JSON (as a single line)
-4. Deploy
+6. Railway auto-detects Python and deploys
+7. Copy the Railway URL and update your Vercel frontend's `NEXT_PUBLIC_API_URL`
 
-### Setting up Google Credentials for Vercel
+### Setting up Google Credentials
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com)
 2. Create a Service Account with Sheets API access
 3. Download the JSON key file
-4. In Vercel, paste the entire JSON content as the `GOOGLE_CREDENTIALS_JSON` environment variable
+4. Paste the entire JSON content as `GOOGLE_CREDENTIALS_JSON` environment variable
 
 ---
 
