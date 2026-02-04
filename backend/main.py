@@ -69,9 +69,10 @@ app = FastAPI(
 )
 
 # Add CORS middleware
-# In production (Vercel), allow all origins; locally, use configured origins
+# In production (Render/Vercel), allow all origins; locally, use configured origins
 import os
-cors_origins = ["*"] if os.getenv("VERCEL") else CORS_ORIGINS
+is_production = os.getenv("RENDER") or os.getenv("VERCEL") or not DEBUG
+cors_origins = ["*"] if is_production else CORS_ORIGINS
 
 app.add_middleware(
     CORSMiddleware,
