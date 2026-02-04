@@ -37,7 +37,7 @@ export default function DemographicsPage() {
   const getStatConclusion = () => {
     if (!crossTab) return null;
     
-    const { correlation_coefficient, chi_square, p_value, no_no, yes_yes, total_valid } = crossTab;
+    const { correlation_coefficient, chi_square, p_value, no_no, yes_yes } = crossTab;
     
     const conclusions = [];
     
