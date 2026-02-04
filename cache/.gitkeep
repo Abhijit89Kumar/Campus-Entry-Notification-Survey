@@ -1,0 +1,2 @@
+# This file ensures the cache directory exists in the repository
+# The actual cache files (analytics_cache.json) are gitignored
